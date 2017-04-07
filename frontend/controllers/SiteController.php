@@ -11,6 +11,18 @@ use common\models\search\ProductSearch;
 class SiteController extends BaseController
 {
     /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
+
+    /**
      * Displays homepage.
      *
      * @return mixed

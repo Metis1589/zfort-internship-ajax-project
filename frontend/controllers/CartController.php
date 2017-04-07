@@ -10,6 +10,13 @@ use Yii;
  */
 class CartController extends BaseController
 {
+
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
+
     /**
      * Displays homepage.
      *
