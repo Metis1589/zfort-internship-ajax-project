@@ -31,9 +31,7 @@ use yii\helpers\Url;
                     </td>
                     <td class="cart_quantity">
                         <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <?= Html::input('text', 'quantity', $orderItem->amount, ['class' => 'cart_quantity_input', 'autocomplete'=>'off', 'size'=>2]) ?>
-                            <a class="cart_quantity_down" href=""> - </a>
+                            <?= Html::input('number', 'quantity', $orderItem->amount, ['class' => 'cart_quantity_input', 'autocomplete'=>'off', 'size'=>2]) ?>
                         </div>
                     </td>
                     <td class="cart_total">
