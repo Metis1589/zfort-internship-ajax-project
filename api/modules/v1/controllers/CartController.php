@@ -10,18 +10,30 @@ use common\helpers\Cart;
 class CartController extends BaseController
 {
 
+    /**
+     * Adds position to the cart
+     * @return array
+     */
     public function actionCreate()
     {
         Cart::addProduct($this->getProduct(), (int)Yii::$app->request->post('amount', 1));
         return $this->successResponse(false);
     }
 
+    /**
+     * Updates position in the cart
+     * @return array
+     */
     public function actionUpdate()
     {
         Cart::updateProduct($this->getProduct(), (int)Yii::$app->request->post('amount', 1));
         return $this->successResponse(true);
     }
 
+    /**
+     * Deletes position from the cart
+     * @return array
+     */
     public function actionDelete()
     {
         Cart::removeProduct($this->getProduct());

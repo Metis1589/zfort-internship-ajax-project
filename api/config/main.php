@@ -41,8 +41,7 @@ return [
                     'patterns' => [
                         'POST' => 'create',
                         'PUT' => 'update',
-                        'DELETE' => 'update',
-                        'GET' => 'create',
+                        'DELETE' => 'delete',
                         '' => 'options',
                     ],
                 ]
