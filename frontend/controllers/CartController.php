@@ -32,7 +32,7 @@ class CartController extends BaseController
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         Cart::addProduct($this->getProduct(), (int)Yii::$app->request->post('amount', 1));
-        return $this->successResponse(false);
+        return $this->successResponse();
     }
 
     /**
@@ -43,7 +43,7 @@ class CartController extends BaseController
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         Cart::updateProduct($this->getProduct(), (int)Yii::$app->request->post('amount', 1));
-        return $this->successResponse(true);
+        return $this->successResponse();
     }
 
     /**
@@ -54,12 +54,12 @@ class CartController extends BaseController
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         Cart::removeProduct($this->getProduct());
-        return $this->successResponse(true);
+        return $this->successResponse();
     }
 
     protected function getProduct(){
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        if (!($product = Product::findOne(['slug' => Yii::$app->request->post('product', 'white-blouse')]))) {
+        if (!($product = Product::findOne(['slug' => Yii::$app->request->post('product')]))) {
             return [
                 'success' => false,
                 'errors' => ['Selected product is not available at the moment']
@@ -73,10 +73,10 @@ class CartController extends BaseController
      * @param bool $withCartInfo
      * @return array
      */
-    protected function successResponse($withCartInfo = false){
+    protected function successResponse(){
         return [
             'success' => true,
-            'data' => $withCartInfo ? Cart::getOrderDetails() : []
+            'data' => Cart::getOrderDetails()
         ];
     }
 }
