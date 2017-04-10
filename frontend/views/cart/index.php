@@ -36,6 +36,7 @@ use yii\helpers\Url;
                     </td>
                     <td class="cart_total">
                         <p class="cart_total_price">$<?= $orderItem->amount * $orderItem->product->price ?></p>
+                        <?= Html::input('hidden','slug',$orderItem->product->slug, ['class' => 'slug']) ?>
                     </td>
                     <td class="cart_delete">
                         <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
